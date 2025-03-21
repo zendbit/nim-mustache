@@ -43,7 +43,7 @@ proc loadPartial*(loader: Loader, filename: string): (bool, string) =
   of lkDir:
     for dir in loader.searchDirs:
       let path = fmt"{dir}/{filename}.mustache"
-      if existsFile(path):
+      if fileExists(path):
         return (true, readFile(path))
   of lkTable:
     if loader.table.hasKey(filename):
